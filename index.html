@@ -291,6 +291,7 @@
     .role-president        { background: rgba(220,50,50,0.15);  color: #e87070; border-color: rgba(220,50,50,0.35); }
     .role-vp               { background: rgba(230,120,40,0.15); color: #f0a060; border-color: rgba(230,120,40,0.35); }
     .role-engagement       { background: rgba(80,180,100,0.15); color: #6dcc85; border-color: rgba(80,180,100,0.35); }
+    .role-promotions       { background: rgba(220,80,180,0.15); color: #e070d0; border-color: rgba(220,80,180,0.35); }
     .role-treasurer        { background: rgba(160,90,220,0.15); color: #c490f0; border-color: rgba(160,90,220,0.35); }
     .role-secretary        { background: rgba(220,180,50,0.15); color: #e0c050; border-color: rgba(220,180,50,0.35); }
     .role-creative         { background: rgba(80,170,230,0.15); color: #70c8f5; border-color: rgba(80,170,230,0.35); }
@@ -634,6 +635,7 @@
         <option value="President">President</option>
         <option value="Vice President">Vice President</option>
         <option value="Director of Engagement">Director of Engagement</option>
+        <option value="Director of Promotions">Director of Promotions</option>
         <option value="Treasurer">Treasurer</option>
         <option value="Secretary">Secretary</option>
         <option value="Creative Director">Creative Director</option>
@@ -658,7 +660,8 @@
             <th onclick="sortTable(1)">Grad Year <span class="sort-icon">↕</span></th>
             <th onclick="sortTable(2)">Role <span class="sort-icon">↕</span></th>
             <th onclick="sortTable(3)">Major <span class="sort-icon">↕</span></th>
-            <th onclick="sortTable(4)">Location <span class="sort-icon">↕</span></th>
+            <th onclick="sortTable(4)">Hometown <span class="sort-icon">↕</span></th>
+            <th onclick="sortTable(5)">Current Location <span class="sort-icon">↕</span></th>
           </tr>
         </thead>
         <tbody id="alumniBody">
@@ -673,7 +676,7 @@
 
     <div class="add-alumni-cta">
       <p>Are you a Ross-Ade Brigade alum not listed here? Submit your info and we'll add you to the directory.</p>
-      <button class="btn btn-primary" onclick="openModal()">Add Your Entry</button>
+      <a href="https://forms.gle/CGeGVDfPL4QeK5hg8" target="_blank" class="btn btn-primary">Add Your Entry</a>
     </div>
   </div>
 </section>
@@ -779,8 +782,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Ross-Ade Brigade</div>
-  <p class="footer-text">Purdue All-American Marching Band · West Lafayette, Indiana · Boiler Up! 🚂</p>
-  <p class="footer-github-note">Maintained by volunteers · <a href="https://github.com" target="_blank">View on GitHub</a> · Built with ❤️ by alumni</p>
+  <p class="footer-text">The Official Student Section for Purdue Football · West Lafayette, Indiana · Boiler Up! 🚂</p>
+  <p class="footer-github-note">Built by Walker Birchfield — 2026 Creative Director</p>
 </footer>
 
 <!-- ALUMNI MODAL -->
@@ -810,6 +813,7 @@
           <option>President</option>
           <option>Vice President</option>
           <option>Director of Engagement</option>
+          <option>Director of Promotions</option>
           <option>Treasurer</option>
           <option>Secretary</option>
           <option>Creative Director</option>
@@ -851,19 +855,66 @@
   // shown immediately; to persist them permanently, connect a
   // Google Form + Sheet (see README for instructions).
   const SEED_DATA = [
-    { name: "Alex Thornton",    year: 2024, role: "President",             major: "Communications",         location: "West Lafayette, IN" },
-    { name: "Jordan Mills",     year: 2023, role: "Vice President",        major: "Mechanical Engineering", location: "Chicago, IL" },
-    { name: "Casey Rivera",     year: 2023, role: "Creative Director",     major: "Art & Design",           location: "Nashville, TN" },
-    { name: "Morgan Lee",       year: 2022, role: "Director of Engagement",major: "Computer Science",       location: "Seattle, WA" },
-    { name: "Taylor Brooks",    year: 2022, role: "Treasurer",             major: "Business",               location: "New York, NY" },
-    { name: "Riley Johnson",    year: 2021, role: "Secretary",             major: "Civil Engineering",      location: "West Lafayette, IN" },
-    { name: "Drew Patterson",   year: 2021, role: "Executive Officer",     major: "Physics",                location: "Austin, TX" },
-    { name: "Quinn Murphy",     year: 2020, role: "President",             major: "Nursing",                location: "Columbus, OH" },
-    { name: "Avery Chen",       year: 2019, role: "Vice President",        major: "Political Science",      location: "Washington, DC" },
-    { name: "Sam Kowalski",     year: 2018, role: "Treasurer",             major: "Chemistry",              location: "Detroit, MI" },
-    { name: "Dana Hernandez",   year: 2017, role: "Creative Director",     major: "Graphic Design",         location: "Lafayette, IN" },
-    { name: "Chris Wallace",    year: 2016, role: "Director of Engagement",major: "Kinesiology",            location: "Houston, TX" },
+    { name: "Alex Thornton",    year: 2024, role: "President",              major: "Communications",         hometown: "Indianapolis, IN", location: "West Lafayette, IN" },
+    { name: "Jordan Mills",     year: 2023, role: "Vice President",         major: "Mechanical Engineering", hometown: "Columbus, OH",      location: "Chicago, IL" },
+    { name: "Casey Rivera",     year: 2023, role: "Creative Director",      major: "Art & Design",           hometown: "Louisville, KY",    location: "Nashville, TN" },
+    { name: "Morgan Lee",       year: 2022, role: "Director of Engagement", major: "Computer Science",       hometown: "Fort Wayne, IN",    location: "Seattle, WA" },
+    { name: "Taylor Brooks",    year: 2022, role: "Treasurer",              major: "Business",               hometown: "Carmel, IN",        location: "New York, NY" },
+    { name: "Riley Johnson",    year: 2021, role: "Secretary",              major: "Civil Engineering",      hometown: "Terre Haute, IN",   location: "West Lafayette, IN" },
+    { name: "Drew Patterson",   year: 2021, role: "Director of Promotions", major: "Marketing",              hometown: "Evansville, IN",    location: "Austin, TX" },
+    { name: "Quinn Murphy",     year: 2020, role: "Executive Officer",      major: "Nursing",                hometown: "South Bend, IN",    location: "Columbus, OH" },
+    { name: "Avery Chen",       year: 2019, role: "President",              major: "Political Science",      hometown: "Zionsville, IN",    location: "Washington, DC" },
+    { name: "Sam Kowalski",     year: 2018, role: "Vice President",         major: "Chemistry",              hometown: "Muncie, IN",        location: "Detroit, MI" },
+    { name: "Dana Hernandez",   year: 2017, role: "Creative Director",      major: "Graphic Design",         hometown: "Bloomington, IN",   location: "Lafayette, IN" },
+    { name: "Chris Wallace",    year: 2016, role: "Director of Engagement", major: "Kinesiology",            hometown: "Fishers, IN",       location: "Houston, TX" },
   ];
+
+  // ── GOOGLE SHEET INTEGRATION ─────────────────────────────────
+  // 1. Create a Google Form with fields in this order:
+  //    Timestamp | First Name | Last Name | Grad Year | Role | Major | Hometown | Current City/State | Email
+  // 2. Link the Form to a Google Sheet (Responses → Link to Sheets)
+  // 3. In the Sheet: File → Share → Publish to web → CSV → copy the URL
+  // 4. Paste that URL below and uncomment the loadFromSheet() call in INIT
+  const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSQbxoQL7eLceh57-1f8CHp0EikQEGnga7r7oLpRqsWWSjVqYZzFYCDoJQ81lnf7gAL6NBnSnSTvVGn/pub?gid=706643543&single=true&output=csv'; // ← paste your published CSV URL here
+
+  async function loadFromSheet() {
+    if (!SHEET_CSV_URL) { loadLocalSubmissions(); return; }
+    try {
+      const res = await fetch(SHEET_CSV_URL);
+      const text = await res.text();
+      const rows = text.trim().split('\n').slice(1);
+      const sheetData = rows.map(row => {
+        // Handle quoted CSV fields (Google Sheets wraps commas-in-values)
+        const cols = [];
+        let cur = '', inQ = false;
+        for (let i = 0; i < row.length; i++) {
+          if (row[i] === '"') { inQ = !inQ; }
+          else if (row[i] === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+          else { cur += row[i]; }
+        }
+        cols.push(cur.trim());
+        // Column order: 0=Timestamp, 1=FirstName, 2=LastName, 3=Year, 4=Role, 5=Major, 6=Hometown, 7=CurrentCity, 8=Email
+        return {
+          name:     `${cols[1] || ''} ${cols[2] || ''}`.trim(),
+          year:     parseInt(cols[3]) || 0,
+          role:     cols[4] || '—',
+          major:    cols[5] || '—',
+          hometown: cols[6] || '—',
+          location: cols[7] || '—',
+        };
+      }).filter(a => a.name && a.year);
+
+      // De-duplicate: sheet entry wins over seed data if name matches
+      const sheetNames = new Set(sheetData.map(a => a.name.toLowerCase()));
+      const seedFiltered = SEED_DATA.filter(a => !sheetNames.has(a.name.toLowerCase()));
+      allAlumni = [...sheetData, ...seedFiltered];
+    } catch(e) {
+      console.warn('Sheet fetch failed, using seed data:', e);
+      allAlumni = [...SEED_DATA];
+    }
+    allAlumni = sortData(allAlumni, 1, -1);
+    renderTable(allAlumni);
+  }
 
   let allAlumni = [...SEED_DATA];
   let sortCol = 1, sortDir = -1; // default: newest first
@@ -875,11 +926,16 @@
     } catch(e) { allAlumni = [...SEED_DATA]; }
   }
 
+  // ── INIT ─────────────────────────────────────────────────────
+  loadFromSheet(); // fetches Sheet CSV if URL is set, otherwise falls back to seed data
+  renderPhotos('all');
+
   function roleBadgeClass(role) {
     const map = {
       'President': 'role-president',
       'Vice President': 'role-vp',
       'Director of Engagement': 'role-engagement',
+      'Director of Promotions': 'role-promotions',
       'Treasurer': 'role-treasurer',
       'Secretary': 'role-secretary',
       'Creative Director': 'role-creative',
@@ -892,7 +948,7 @@
     const tbody = document.getElementById('alumniBody');
     const count = document.getElementById('tableCount');
     if (!data.length) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--muted)">No alumni match your search.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">No alumni match your search.</td></tr>';
       count.textContent = '0 results';
       return;
     }
@@ -902,6 +958,7 @@
         <td>${a.year}</td>
         <td><span class="role-badge ${roleBadgeClass(a.role)}">${a.role}</span></td>
         <td>${a.major || '—'}</td>
+        <td>${a.hometown || '—'}</td>
         <td>${a.location || '—'}</td>
       </tr>
     `).join('');
@@ -913,7 +970,7 @@
     const role = document.getElementById('roleFilter').value;
     const decade = document.getElementById('decadeFilter').value;
     let filtered = allAlumni.filter(a => {
-      const matchQ = !q || [a.name, String(a.year), a.major, a.location].some(v => v && v.toLowerCase().includes(q));
+      const matchQ = !q || [a.name, String(a.year), a.major, a.hometown, a.location].some(v => v && v.toLowerCase().includes(q));
       const matchRole = !role || a.role === role;
       const matchDecade = !decade || (a.year >= +decade && a.year < +decade + 10);
       return matchQ && matchRole && matchDecade;
@@ -923,7 +980,7 @@
   }
 
   function sortData(data, col, dir) {
-    const keys = ['name','year','role','major','location'];
+    const keys = ['name','year','role','major','hometown','location'];
     return [...data].sort((a, b) => {
       const av = a[keys[col]] ?? '', bv = b[keys[col]] ?? '';
       return av < bv ? dir : av > bv ? -dir : 0;
@@ -1033,11 +1090,6 @@
     renderPhotos(tag);
   }
 
-  // ── INIT ─────────────────────────────────────────────────────
-  loadLocalSubmissions();
-  allAlumni = sortData(allAlumni, 1, -1);
-  renderTable(allAlumni);
-  renderPhotos('all');
 </script>
 </body>
 </html>
