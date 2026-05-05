@@ -866,44 +866,53 @@
   // 4. Paste that URL below and uncomment the loadFromSheet() call in INIT
   const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSQbxoQL7eLceh57-1f8CHp0EikQEGnga7r7oLpRqsWWSjVqYZzFYCDoJQ81lnf7gAL6NBnSnSTvVGn/pub?gid=706643543&single=true&output=csv'; // ← paste your published CSV URL here
 
-  async function loadFromSheet() {
-    if (!SHEET_CSV_URL) { loadLocalSubmissions(); return; }
-    try {
-      const res = await fetch(SHEET_CSV_URL);
-      const text = await res.text();
-      const rows = text.trim().split('\n').slice(1);
-      const sheetData = rows.map(row => {
-        // Handle quoted CSV fields (Google Sheets wraps commas-in-values)
-        const cols = [];
-        let cur = '', inQ = false;
-        for (let i = 0; i < row.length; i++) {
-          if (row[i] === '"') { inQ = !inQ; }
-          else if (row[i] === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
-          else { cur += row[i]; }
-        }
-        cols.push(cur.trim());
-        // Column order: 0=Timestamp, 1=FirstName, 2=LastName, 3=Year, 4=Role, 5=Major, 6=Hometown, 7=CurrentCity, 8=Email
-        return {
-          name:     `${cols[1] || ''} ${cols[2] || ''}`.trim(),
-          year:     parseInt(cols[3]) || 0,
-          role:     cols[4] || '—',
-          major:    cols[5] || '—',
-          hometown: cols[6] || '—',
-          location: cols[7] || '—',
-        };
-      }).filter(a => a.name && a.year);
+async function loadFromSheet() {
+  if (!SHEET_CSV_URL) { loadLocalSubmissions(); return; }
+  try {
+    const res = await fetch(SHEET_CSV_URL);
+    const text = await res.text();
+    const rows = text.trim().split('\n').slice(1);
 
-      // De-duplicate: sheet entry wins over seed data if name matches
-      const sheetNames = new Set(sheetData.map(a => a.name.toLowerCase()));
-      const seedFiltered = SEED_DATA.filter(a => !sheetNames.has(a.name.toLowerCase()));
-      allAlumni = [...sheetData, ...seedFiltered];
-    } catch(e) {
-      console.warn('Sheet fetch failed, using seed data:', e);
-      allAlumni = [...SEED_DATA];
-    }
-    allAlumni = sortData(allAlumni, 1, -1);
-    renderTable(allAlumni);
+    const seen = new Map();
+
+    rows.forEach(row => {
+      const cols = [];
+      let cur = '', inQ = false;
+      for (let i = 0; i < row.length; i++) {
+        if (row[i] === '"') { inQ = !inQ; }
+        else if (row[i] === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+        else { cur += row[i]; }
+      }
+      cols.push(cur.trim());
+
+      const entry = {
+        name:     `${cols[1] || ''} ${cols[2] || ''}`.trim(),
+        year:     parseInt(cols[3]) || 0,
+        role:     cols[4] || '—',
+        major:    cols[5] || '—',
+        hometown: cols[6] || '—',
+        location: cols[7] || '—',
+      };
+
+      if (entry.name && entry.year) {
+        // Overwrite any previous entry with the same name (case-insensitive)
+        // Since rows are in chronological order, the last one always wins
+        seen.set(entry.name.toLowerCase(), entry);
+      }
+    });
+
+    const sheetData = Array.from(seen.values());
+    const sheetNames = new Set(sheetData.map(a => a.name.toLowerCase()));
+    const seedFiltered = SEED_DATA.filter(a => !sheetNames.has(a.name.toLowerCase()));
+    allAlumni = [...sheetData, ...seedFiltered];
+
+  } catch(e) {
+    console.warn('Sheet fetch failed, using seed data:', e);
+    allAlumni = [...SEED_DATA];
   }
+  allAlumni = sortData(allAlumni, 1, -1);
+  renderTable(allAlumni);
+}
 
   let allAlumni = [...SEED_DATA];
   let sortCol = 1, sortDir = -1; // default: newest first
