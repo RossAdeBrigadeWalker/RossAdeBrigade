@@ -977,7 +977,7 @@ async function loadFromSheet() {
     let filtered = allAlumni.filter(a => {
       const matchQ = !q || [a.name, String(a.year), a.major, a.hometown, a.location].some(v => v && v.toLowerCase().includes(q));
       const matchRole = !role || a.role === role;
-      const matchDecade = !decade || (a.year >= +decade && a.year < +decade + 10);
+      const matchDecade = !decade || a.year === +decade;
       return matchQ && matchRole && matchDecade;
     });
     filtered = sortData(filtered, sortCol, sortDir);
