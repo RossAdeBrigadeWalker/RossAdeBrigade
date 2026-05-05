@@ -18,11 +18,11 @@
       --text: #E8E0D0;
       --muted: #8a7f6e;
     }
- 
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
     html { scroll-behavior: smooth; }
- 
+
     body {
       background: var(--black);
       color: var(--text);
@@ -30,7 +30,7 @@
       font-weight: 300;
       overflow-x: hidden;
     }
- 
+
     /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -60,7 +60,7 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--gold); }
- 
+
     /* ─── HERO ─── */
     #hero {
       min-height: 100vh;
@@ -144,12 +144,12 @@
       border: 1px solid var(--gold);
     }
     .btn-outline:hover { background: rgba(207,185,145,0.08); transform: translateY(-2px); }
- 
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
- 
+
     /* ─── SECTION WRAPPER ─── */
     section { padding: 6rem 2rem; }
     .container { max-width: 1100px; margin: 0 auto; }
@@ -174,7 +174,7 @@
       background: var(--gold);
       margin-bottom: 2.5rem;
     }
- 
+
     /* ─── ABOUT ─── */
     #about { background: var(--dark); }
     .about-grid {
@@ -213,7 +213,7 @@
       color: var(--muted);
       margin-top: 0.3rem;
     }
- 
+
     /* ─── ALUMNI TABLE ─── */
     #alumni { background: var(--black); }
     .table-controls {
@@ -286,10 +286,15 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 0.2rem 0.55rem;
-      background: rgba(207,185,145,0.12);
-      color: var(--gold);
-      border: 1px solid rgba(207,185,145,0.25);
+      border: 1px solid;
     }
+    .role-president        { background: rgba(220,50,50,0.15);  color: #e87070; border-color: rgba(220,50,50,0.35); }
+    .role-vp               { background: rgba(230,120,40,0.15); color: #f0a060; border-color: rgba(230,120,40,0.35); }
+    .role-engagement       { background: rgba(80,180,100,0.15); color: #6dcc85; border-color: rgba(80,180,100,0.35); }
+    .role-treasurer        { background: rgba(160,90,220,0.15); color: #c490f0; border-color: rgba(160,90,220,0.35); }
+    .role-secretary        { background: rgba(220,180,50,0.15); color: #e0c050; border-color: rgba(220,180,50,0.35); }
+    .role-creative         { background: rgba(80,170,230,0.15); color: #70c8f5; border-color: rgba(80,170,230,0.35); }
+    .role-executive        { background: rgba(207,185,145,0.12); color: var(--gold); border-color: rgba(207,185,145,0.25); }
     .table-footer {
       display: flex; justify-content: space-between; align-items: center;
       padding: 0.9rem 1.2rem;
@@ -313,7 +318,7 @@
       font-size: 0.9rem;
       color: var(--muted);
     }
- 
+
     /* ─── MODAL ─── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 200;
@@ -393,7 +398,7 @@
       transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
     }
     .success-toast.show { transform: translateY(0); opacity: 1; }
- 
+
     /* ─── PHOTO ARCHIVE ─── */
     #photos { background: var(--dark); }
     .photo-filters {
@@ -471,7 +476,7 @@
       line-height: 1.6;
     }
     .photo-upload-note strong { color: var(--gold); }
- 
+
     /* ─── CONTACT ─── */
     #contact { background: var(--black); }
     .contact-grid {
@@ -515,7 +520,7 @@
     .contact-info-value a:hover { color: var(--gold); }
     .contact-form { }
     .contact-form .form-row { margin-bottom: 1rem; }
- 
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--dark);
@@ -543,7 +548,7 @@
     }
     .footer-github-note a { color: rgba(207,185,145,0.5); text-decoration: none; }
     .footer-github-note a:hover { color: var(--gold); }
- 
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -556,7 +561,7 @@
   </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Ross-Ade Brigade</a>
@@ -567,69 +572,72 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <section id="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-  <p class="hero-eyebrow">Purdue University · Since 1886</p>
+  <p class="hero-eyebrow">Purdue University · Since 2011</p>
   <h1 class="hero-title">Ross-Ade<br><span>Brigade</span></h1>
-  <p class="hero-sub">The drum major organization of the Purdue All-American Marching Band — united by tradition, excellence, and Boilermaker pride.</p>
+  <p class="hero-sub">The official student section for Purdue University Football</p>
   <div class="hero-cta">
     <a href="#alumni" class="btn btn-primary">View Alumni</a>
     <a href="#about" class="btn btn-outline">Our Story</a>
   </div>
 </section>
- 
+
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
     <p class="section-label">Who We Are</p>
-    <h2 class="section-title">Born From the Field,<br>Built on Tradition</h2>
+    <h2 class="section-title">The leaders behind gamedays at Ross-Ade</h2>
     <div class="section-divider"></div>
     <div class="about-grid">
       <div class="about-text">
-        <p>The Ross-Ade Brigade is the drum major organization of the Purdue All-American Marching Band — one of the most storied bands in collegiate music history. Named in honor of David E. Ross and John L. Ade, whose legacy lives on every time we take the field at Ross-Ade Stadium.</p>
-        <p>Our members represent the pinnacle of marching band leadership, serving as the visual and musical anchors of the Purdue AAMB. Beyond performance, we are a brotherhood and sisterhood of alumni who carry the Boilermaker spirit into every career and community we touch.</p>
-        <p>This site is maintained by alumni volunteers to connect generations of drum majors — past, present, and future.</p>
+        <p>The Ross-Ade Brigade is the official student section of Purdue Boilermakers football, driven by the energy and tradition of Ross-Ade Stadium.</p>
+        <p>Our members lead the game-day atmosphere through chants, traditions, and student engagement that define Purdue football.</p>
+        <p>This site is maintained by alumni and student leaders to connect past, present, and future members of the Brigade.</p>
         <a href="#contact" class="btn btn-outline" style="margin-top:0.5rem">Get In Touch</a>
       </div>
       <div class="about-stats">
         <div class="stat-card">
-          <div class="stat-number">1886</div>
-          <div class="stat-label">Founded</div>
+          <div class="stat-number">1887</div>
+          <div class="stat-label">Purdue Football Founded</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">300+</div>
-          <div class="stat-label">Alumni</div>
+          <div class="stat-number">2011</div>
+          <div class="stat-label">Ross-Ade Brigade Founded</div>
         </div>
         <div class="stat-card">
-          <div class="stat-number">100+</div>
-          <div class="stat-label">Years of Tradition</div>
+          <div class="stat-number">10,000</div>
+          <div class="stat-label">Student Seats</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">1</div>
-          <div class="stat-label">World's Largest Drum</div>
+          <div class="stat-label">Gameday Experience</div>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- ALUMNI TABLE -->
 <section id="alumni">
   <div class="container">
-    <p class="section-label">The Roll Call</p>
     <h2 class="section-title">Alumni Directory</h2>
     <div class="section-divider"></div>
- 
+
     <div class="table-controls">
       <input class="search-input" type="text" id="searchInput" placeholder="Search by name, year, or major…" oninput="filterTable()" />
       <select class="filter-select" id="roleFilter" onchange="filterTable()">
         <option value="">All Roles</option>
-        <option value="Drum Major">Drum Major</option>
-        <option value="Feature Twirler">Feature Twirler</option>
-        <option value="Head Drum Major">Head Drum Major</option>
+        <option value="President">President</option>
+        <option value="Vice President">Vice President</option>
+        <option value="Director of Engagement">Director of Engagement</option>
+        <option value="Treasurer">Treasurer</option>
+        <option value="Secretary">Secretary</option>
+        <option value="Creative Director">Creative Director</option>
+        <option value="Executive Officer">Executive Officer</option>
       </select>
       <select class="filter-select" id="decadeFilter" onchange="filterTable()">
         <option value="">All Decades</option>
@@ -641,7 +649,7 @@
         <option value="1970">1970s</option>
       </select>
     </div>
- 
+
     <div class="table-wrapper">
       <table id="alumniTable">
         <thead>
@@ -662,21 +670,21 @@
       <span id="tableCount">Showing all alumni</span>
       <span>Click column headers to sort</span>
     </div>
- 
+
     <div class="add-alumni-cta">
       <p>Are you a Ross-Ade Brigade alum not listed here? Submit your info and we'll add you to the directory.</p>
       <button class="btn btn-primary" onclick="openModal()">Add Your Entry</button>
     </div>
   </div>
 </section>
- 
+
 <!-- PHOTO ARCHIVE -->
 <section id="photos">
   <div class="container">
     <p class="section-label">Memory Lane</p>
     <h2 class="section-title">Photo Archive</h2>
     <div class="section-divider"></div>
- 
+
     <div class="photo-filters">
       <button class="photo-filter-btn active" onclick="filterPhotos('all', this)">All</button>
       <button class="photo-filter-btn" onclick="filterPhotos('game-day', this)">Game Day</button>
@@ -684,11 +692,11 @@
       <button class="photo-filter-btn" onclick="filterPhotos('historic', this)">Historic</button>
       <button class="photo-filter-btn" onclick="filterPhotos('rehearsal', this)">Rehearsal</button>
     </div>
- 
+
     <div class="photo-grid" id="photoGrid">
       <!-- Photos populated by JS -->
     </div>
- 
+
     <div class="photo-upload-note">
       <strong>📸 Contribute to the Archive</strong> — Have photos from your years with the Brigade?
       Send them to <a href="mailto:archive@rossadebrigade.org" style="color:var(--gold)">archive@rossadebrigade.org</a>
@@ -697,54 +705,45 @@
     </div>
   </div>
 </section>
- 
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <p class="section-label">Stay Connected</p>
     <h2 class="section-title">Contact Us</h2>
     <div class="section-divider"></div>
- 
+
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="contact-info-item">
-          <div class="contact-icon">🏟️</div>
-          <div>
-            <div class="contact-info-label">Organization</div>
-            <div class="contact-info-value">Ross-Ade Brigade<br>Purdue All-American Marching Band<br>West Lafayette, IN 47907</div>
-          </div>
-        </div>
         <div class="contact-info-item">
           <div class="contact-icon">✉️</div>
           <div>
             <div class="contact-info-label">Email</div>
             <div class="contact-info-value">
-              <a href="mailto:alumni@rossadebrigade.org">alumni@rossadebrigade.org</a><br>
-              <a href="mailto:archive@rossadebrigade.org">archive@rossadebrigade.org</a>
+              <a href="mailto:purduebrigade@gmail.com">purduebrigade@gmail.com</a>
             </div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-icon">🎺</div>
+          <div class="contact-icon">📸</div>
           <div>
-            <div class="contact-info-label">Purdue AAMB</div>
+            <div class="contact-info-label">Instagram</div>
             <div class="contact-info-value">
-              <a href="https://www.purdue.edu/bands" target="_blank">purdue.edu/bands</a>
+              <a href="https://www.instagram.com/rossadebrigade" target="_blank">@rossadebrigade</a>
             </div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-icon">📘</div>
+          <div class="contact-icon">💻</div>
           <div>
-            <div class="contact-info-label">Social</div>
+            <div class="contact-info-label">Website Creator</div>
             <div class="contact-info-value">
-              <a href="#">Facebook Group</a><br>
-              <a href="#">Instagram</a>
+              <a href="mailto:Walker.Birchfield03@gmail.com">Walker.Birchfield03@gmail.com</a>
             </div>
           </div>
         </div>
       </div>
- 
+
       <div class="contact-form">
         <div class="form-row-2">
           <div class="form-row">
@@ -779,20 +778,20 @@
     </div>
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Ross-Ade Brigade</div>
   <p class="footer-text">Purdue All-American Marching Band · West Lafayette, Indiana · Boiler Up! 🚂</p>
   <p class="footer-github-note">Maintained by volunteers · <a href="https://github.com" target="_blank">View on GitHub</a> · Built with ❤️ by alumni</p>
 </footer>
- 
+
 <!-- ALUMNI MODAL -->
 <div class="modal-overlay" id="alumniModal">
   <div class="modal">
     <div class="modal-title">Add Your Entry</div>
     <p class="modal-sub">Your submission will be reviewed before appearing in the directory.</p>
- 
+
     <div class="form-row-2">
       <div class="form-row">
         <label class="form-label">First Name *</label>
@@ -811,9 +810,13 @@
       <div class="form-row">
         <label class="form-label">Role *</label>
         <select class="form-select" id="mRole">
-          <option>Drum Major</option>
-          <option>Head Drum Major</option>
-          <option>Feature Twirler</option>
+          <option>President</option>
+          <option>Vice President</option>
+          <option>Director of Engagement</option>
+          <option>Treasurer</option>
+          <option>Secretary</option>
+          <option>Creative Director</option>
+          <option>Executive Officer</option>
         </select>
       </div>
     </div>
@@ -833,17 +836,17 @@
       <label class="form-label">Fun Fact / Memory (optional)</label>
       <textarea class="form-textarea" id="mNote" placeholder="A favorite Brigade memory…"></textarea>
     </div>
- 
+
     <div class="modal-actions">
       <button class="btn-close-modal" onclick="closeModal()">Cancel</button>
       <button class="btn btn-primary" onclick="submitAlumni()">Submit Entry</button>
     </div>
   </div>
 </div>
- 
+
 <!-- SUCCESS TOAST -->
 <div class="success-toast" id="toast">✓ Submitted — thank you!</div>
- 
+
 <script>
   // ── ALUMNI DATA ──────────────────────────────────────────────
   // Replace / expand this array with your real roster.
@@ -851,30 +854,43 @@
   // shown immediately; to persist them permanently, connect a
   // Google Form + Sheet (see README for instructions).
   const SEED_DATA = [
-    { name: "Alex Thornton",    year: 2022, role: "Head Drum Major",  major: "Music Education",       location: "Indianapolis, IN" },
-    { name: "Jordan Mills",     year: 2020, role: "Drum Major",       major: "Mechanical Engineering", location: "Chicago, IL" },
-    { name: "Casey Rivera",     year: 2018, role: "Feature Twirler",  major: "Communication",          location: "Nashville, TN" },
-    { name: "Morgan Lee",       year: 2015, role: "Drum Major",       major: "Computer Science",       location: "Seattle, WA" },
-    { name: "Taylor Brooks",    year: 2013, role: "Head Drum Major",  major: "Business",               location: "New York, NY" },
-    { name: "Riley Johnson",    year: 2010, role: "Drum Major",       major: "Civil Engineering",      location: "West Lafayette, IN" },
-    { name: "Drew Patterson",   year: 2008, role: "Drum Major",       major: "Physics",                location: "Austin, TX" },
-    { name: "Quinn Murphy",     year: 2005, role: "Feature Twirler",  major: "Nursing",                location: "Columbus, OH" },
-    { name: "Avery Chen",       year: 2001, role: "Head Drum Major",  major: "Political Science",      location: "Washington, DC" },
-    { name: "Sam Kowalski",     year: 1998, role: "Drum Major",       major: "Chemistry",              location: "Detroit, MI" },
-    { name: "Dana Hernandez",   year: 1995, role: "Drum Major",       major: "Agriculture",            location: "Lafayette, IN" },
-    { name: "Chris Wallace",    year: 1992, role: "Head Drum Major",  major: "Aeronautical Eng.",      location: "Houston, TX" },
+    { name: "Alex Thornton",    year: 2024, role: "President",             major: "Communications",         location: "West Lafayette, IN" },
+    { name: "Jordan Mills",     year: 2023, role: "Vice President",        major: "Mechanical Engineering", location: "Chicago, IL" },
+    { name: "Casey Rivera",     year: 2023, role: "Creative Director",     major: "Art & Design",           location: "Nashville, TN" },
+    { name: "Morgan Lee",       year: 2022, role: "Director of Engagement",major: "Computer Science",       location: "Seattle, WA" },
+    { name: "Taylor Brooks",    year: 2022, role: "Treasurer",             major: "Business",               location: "New York, NY" },
+    { name: "Riley Johnson",    year: 2021, role: "Secretary",             major: "Civil Engineering",      location: "West Lafayette, IN" },
+    { name: "Drew Patterson",   year: 2021, role: "Executive Officer",     major: "Physics",                location: "Austin, TX" },
+    { name: "Quinn Murphy",     year: 2020, role: "President",             major: "Nursing",                location: "Columbus, OH" },
+    { name: "Avery Chen",       year: 2019, role: "Vice President",        major: "Political Science",      location: "Washington, DC" },
+    { name: "Sam Kowalski",     year: 2018, role: "Treasurer",             major: "Chemistry",              location: "Detroit, MI" },
+    { name: "Dana Hernandez",   year: 2017, role: "Creative Director",     major: "Graphic Design",         location: "Lafayette, IN" },
+    { name: "Chris Wallace",    year: 2016, role: "Director of Engagement",major: "Kinesiology",            location: "Houston, TX" },
   ];
- 
+
   let allAlumni = [...SEED_DATA];
   let sortCol = 1, sortDir = -1; // default: newest first
- 
+
   function loadLocalSubmissions() {
     try {
       const stored = JSON.parse(localStorage.getItem('rab_submissions') || '[]');
       allAlumni = [...stored, ...SEED_DATA];
     } catch(e) { allAlumni = [...SEED_DATA]; }
   }
- 
+
+  function roleBadgeClass(role) {
+    const map = {
+      'President': 'role-president',
+      'Vice President': 'role-vp',
+      'Director of Engagement': 'role-engagement',
+      'Treasurer': 'role-treasurer',
+      'Secretary': 'role-secretary',
+      'Creative Director': 'role-creative',
+      'Executive Officer': 'role-executive',
+    };
+    return map[role] || 'role-executive';
+  }
+
   function renderTable(data) {
     const tbody = document.getElementById('alumniBody');
     const count = document.getElementById('tableCount');
@@ -887,14 +903,14 @@
       <tr>
         <td style="color:#e8e0d0;font-weight:400">${a.name}</td>
         <td>${a.year}</td>
-        <td><span class="role-badge">${a.role}</span></td>
+        <td><span class="role-badge ${roleBadgeClass(a.role)}">${a.role}</span></td>
         <td>${a.major || '—'}</td>
         <td>${a.location || '—'}</td>
       </tr>
     `).join('');
     count.textContent = `Showing ${data.length} of ${allAlumni.length} alumni`;
   }
- 
+
   function filterTable() {
     const q = document.getElementById('searchInput').value.toLowerCase();
     const role = document.getElementById('roleFilter').value;
@@ -908,7 +924,7 @@
     filtered = sortData(filtered, sortCol, sortDir);
     renderTable(filtered);
   }
- 
+
   function sortData(data, col, dir) {
     const keys = ['name','year','role','major','location'];
     return [...data].sort((a, b) => {
@@ -916,13 +932,13 @@
       return av < bv ? dir : av > bv ? -dir : 0;
     });
   }
- 
+
   function sortTable(col) {
     if (sortCol === col) sortDir *= -1;
     else { sortCol = col; sortDir = 1; }
     filterTable();
   }
- 
+
   // ── MODAL ────────────────────────────────────────────────────
   function openModal() {
     document.getElementById('alumniModal').classList.add('open');
@@ -935,7 +951,7 @@
   document.getElementById('alumniModal').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeModal();
   });
- 
+
   function submitAlumni() {
     const first = document.getElementById('mFirst').value.trim();
     const last  = document.getElementById('mLast').value.trim();
@@ -966,14 +982,14 @@
     // Clear fields
     ['mFirst','mLast','mYear','mMajor','mLocation','mEmail','mNote'].forEach(id => document.getElementById(id).value = '');
   }
- 
+
   function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3500);
   }
- 
+
   // ── CONTACT FORM ─────────────────────────────────────────────
   function submitContact() {
     const first = document.getElementById('cfFirst').value.trim();
@@ -984,7 +1000,7 @@
     showToast('✓ Message sent — we\'ll be in touch!');
     ['cfFirst','cfLast','cfEmail','cfMessage'].forEach(id => document.getElementById(id).value = '');
   }
- 
+
   // ── PHOTO ARCHIVE ─────────────────────────────────────────────
   const PHOTOS = [
     { emoji: '🏟️', title: 'Ross-Ade Stadium Halftime', date: 'Fall 2023',   tag: 'game-day'  },
@@ -997,7 +1013,7 @@
     { emoji: '🤝', title: '50-Year Reunion Dinner',     date: '2015',        tag: 'reunion'   },
     { emoji: '🏋️', title: 'August Band Camp',           date: 'Aug 2023',    tag: 'rehearsal' },
   ];
- 
+
   function renderPhotos(filter) {
     const grid = document.getElementById('photoGrid');
     const photos = filter === 'all' ? PHOTOS : PHOTOS.filter(p => p.tag === filter);
@@ -1013,13 +1029,13 @@
       </div>
     `).join('');
   }
- 
+
   function filterPhotos(tag, btn) {
     document.querySelectorAll('.photo-filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     renderPhotos(tag);
   }
- 
+
   // ── INIT ─────────────────────────────────────────────────────
   loadLocalSubmissions();
   allAlumni = sortData(allAlumni, 1, -1);
