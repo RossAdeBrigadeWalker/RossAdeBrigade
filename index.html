@@ -681,7 +681,6 @@
 <!-- PHOTO ARCHIVE -->
 <section id="photos">
   <div class="container">
-    <p class="section-label">Memory Lane</p>
     <h2 class="section-title">Photo Archive</h2>
     <div class="section-divider"></div>
 
@@ -689,8 +688,6 @@
       <button class="photo-filter-btn active" onclick="filterPhotos('all', this)">All</button>
       <button class="photo-filter-btn" onclick="filterPhotos('game-day', this)">Game Day</button>
       <button class="photo-filter-btn" onclick="filterPhotos('reunion', this)">Reunions</button>
-      <button class="photo-filter-btn" onclick="filterPhotos('historic', this)">Historic</button>
-      <button class="photo-filter-btn" onclick="filterPhotos('rehearsal', this)">Rehearsal</button>
     </div>
 
     <div class="photo-grid" id="photoGrid">
@@ -825,16 +822,16 @@
       <input class="form-input" type="text" id="mMajor" placeholder="e.g. Electrical Engineering" />
     </div>
     <div class="form-row">
+      <label class="form-label">Hometown</label>
+      <input class="form-input" type="text" id="mHometown" placeholder="e.g. Indianapolis, IN" />
+    </div>
+    <div class="form-row">
       <label class="form-label">Current City, State</label>
       <input class="form-input" type="text" id="mLocation" placeholder="e.g. Chicago, IL" />
     </div>
     <div class="form-row">
       <label class="form-label">Email (not displayed publicly)</label>
       <input class="form-input" type="email" id="mEmail" placeholder="for verification only" />
-    </div>
-    <div class="form-row">
-      <label class="form-label">Fun Fact / Memory (optional)</label>
-      <textarea class="form-textarea" id="mNote" placeholder="A favorite Brigade memory…"></textarea>
     </div>
 
     <div class="modal-actions">
@@ -980,7 +977,7 @@
     closeModal();
     showToast('✓ Entry added! It will be reviewed by an admin.');
     // Clear fields
-    ['mFirst','mLast','mYear','mMajor','mLocation','mEmail','mNote'].forEach(id => document.getElementById(id).value = '');
+    ['mFirst','mLast','mYear','mMajor','mHometown','mLocation','mEmail'].forEach(id => document.getElementById(id).value = '');
   }
 
   function showToast(msg) {
