@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ross-Ade Brigade | Purdue University Drum Major Organization</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #CFB991;
+      --gold-bright: #F5C518;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --mid: #1C1C1C;
+      --panel: #181818;
+      --border: rgba(207,185,145,0.18);
+      --text: #E8E0D0;
+      --muted: #8a7f6e;
+    }
+ 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+ 
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 58px;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+ 
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(207,185,145,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(207,185,145,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(207,185,145,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      color: #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.65;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.8rem;
+      border: none; cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-outline:hover { background: rgba(207,185,145,0.08); transform: translateY(-2px); }
+ 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    /* ─── SECTION WRAPPER ─── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .section-divider {
+      width: 48px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+ 
+    /* ─── ABOUT ─── */
+    #about { background: var(--dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #c0b89e;
+      margin-bottom: 1.1rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.6rem;
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+ 
+    /* ─── ALUMNI TABLE ─── */
+    #alumni { background: var(--black); }
+    .table-controls {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+    .search-input {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.55rem 1rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      width: 240px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input::placeholder { color: var(--muted); }
+    .search-input:focus { border-color: var(--gold); }
+    .filter-select {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.55rem 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      outline: none;
+      cursor: pointer;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    thead {
+      background: var(--mid);
+    }
+    th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 1rem 1.2rem;
+      text-align: left;
+      cursor: pointer;
+      white-space: nowrap;
+      user-select: none;
+    }
+    th:hover { color: var(--gold-bright); }
+    th .sort-icon { margin-left: 4px; opacity: 0.5; }
+    td {
+      padding: 0.85rem 1.2rem;
+      border-top: 1px solid var(--border);
+      color: #c0b89e;
+      vertical-align: middle;
+    }
+    tr:hover td { background: rgba(207,185,145,0.04); }
+    .role-badge {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      background: rgba(207,185,145,0.12);
+      color: var(--gold);
+      border: 1px solid rgba(207,185,145,0.25);
+    }
+    .table-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.9rem 1.2rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-top: none;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    .add-alumni-cta {
+      margin-top: 1.5rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--panel);
+      border: 1px dashed rgba(207,185,145,0.3);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .add-alumni-cta p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+ 
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      width: min(520px, 92vw);
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(20px);
+      transition: transform 0.25s;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+    .modal-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.8rem; }
+    .form-row { margin-bottom: 1.2rem; }
+    .form-label {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 0.9rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .modal-actions { display: flex; gap: 0.8rem; margin-top: 1.8rem; justify-content: flex-end; }
+    .btn-close-modal {
+      background: none; border: 1px solid var(--border);
+      color: var(--muted); cursor: pointer;
+      padding: 0.65rem 1.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-close-modal:hover { border-color: var(--muted); color: var(--text); }
+    .success-toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 300;
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.8rem 1.4rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .success-toast.show { transform: translateY(0); opacity: 1; }
+ 
+    /* ─── PHOTO ARCHIVE ─── */
+    #photos { background: var(--dark); }
+    .photo-filters {
+      display: flex; gap: 0.6rem; flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .photo-filter-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .photo-filter-btn:hover, .photo-filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(207,185,145,0.06);
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.9rem;
+    }
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--mid);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      group: true;
+    }
+    .photo-card .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem;
+      background: var(--mid);
+      font-size: 2.5rem;
+    }
+    .photo-card .photo-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      padding: 1.5rem 1rem 0.8rem;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+    .photo-card:hover .photo-caption { transform: translateY(0); }
+    .photo-caption-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+    .photo-caption-date {
+      font-size: 0.72rem;
+      color: var(--gold);
+      margin-top: 0.1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.1em;
+    }
+    .photo-upload-note {
+      margin-top: 1.5rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--panel);
+      border: 1px dashed rgba(207,185,145,0.3);
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .photo-upload-note strong { color: var(--gold); }
+ 
+    /* ─── CONTACT ─── */
+    #contact { background: var(--black); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info-item {
+      display: flex; gap: 1rem;
+      margin-bottom: 1.8rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 40px; height: 40px;
+      background: rgba(207,185,145,0.1);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .contact-info-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .contact-info-value {
+      font-size: 0.92rem;
+      color: #c0b89e;
+      line-height: 1.5;
+    }
+    .contact-info-value a {
+      color: #c0b89e;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-info-value a:hover { color: var(--gold); }
+    .contact-form { }
+    .contact-form .form-row { margin-bottom: 1rem; }
+ 
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .footer-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.06em;
+    }
+    .footer-github-note {
+      margin-top: 1rem;
+      font-size: 0.73rem;
+      color: rgba(138,127,110,0.5);
+    }
+    .footer-github-note a { color: rgba(207,185,145,0.5); text-decoration: none; }
+    .footer-github-note a:hover { color: var(--gold); }
+ 
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.75rem; }
+      .add-alumni-cta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Ross-Ade Brigade</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#alumni">Alumni</a></li>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+ 
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <p class="hero-eyebrow">Purdue University · Since 1886</p>
+  <h1 class="hero-title">Ross-Ade<br><span>Brigade</span></h1>
+  <p class="hero-sub">The drum major organization of the Purdue All-American Marching Band — united by tradition, excellence, and Boilermaker pride.</p>
+  <div class="hero-cta">
+    <a href="#alumni" class="btn btn-primary">View Alumni</a>
+    <a href="#about" class="btn btn-outline">Our Story</a>
+  </div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">Who We Are</p>
+    <h2 class="section-title">Born From the Field,<br>Built on Tradition</h2>
+    <div class="section-divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>The Ross-Ade Brigade is the drum major organization of the Purdue All-American Marching Band — one of the most storied bands in collegiate music history. Named in honor of David E. Ross and John L. Ade, whose legacy lives on every time we take the field at Ross-Ade Stadium.</p>
+        <p>Our members represent the pinnacle of marching band leadership, serving as the visual and musical anchors of the Purdue AAMB. Beyond performance, we are a brotherhood and sisterhood of alumni who carry the Boilermaker spirit into every career and community we touch.</p>
+        <p>This site is maintained by alumni volunteers to connect generations of drum majors — past, present, and future.</p>
+        <a href="#contact" class="btn btn-outline" style="margin-top:0.5rem">Get In Touch</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">1886</div>
+          <div class="stat-label">Founded</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">300+</div>
+          <div class="stat-label">Alumni</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Years of Tradition</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1</div>
+          <div class="stat-label">World's Largest Drum</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ALUMNI TABLE -->
+<section id="alumni">
+  <div class="container">
+    <p class="section-label">The Roll Call</p>
+    <h2 class="section-title">Alumni Directory</h2>
+    <div class="section-divider"></div>
+ 
+    <div class="table-controls">
+      <input class="search-input" type="text" id="searchInput" placeholder="Search by name, year, or major…" oninput="filterTable()" />
+      <select class="filter-select" id="roleFilter" onchange="filterTable()">
+        <option value="">All Roles</option>
+        <option value="Drum Major">Drum Major</option>
+        <option value="Feature Twirler">Feature Twirler</option>
+        <option value="Head Drum Major">Head Drum Major</option>
+      </select>
+      <select class="filter-select" id="decadeFilter" onchange="filterTable()">
+        <option value="">All Decades</option>
+        <option value="2020">2020s</option>
+        <option value="2010">2010s</option>
+        <option value="2000">2000s</option>
+        <option value="1990">1990s</option>
+        <option value="1980">1980s</option>
+        <option value="1970">1970s</option>
+      </select>
+    </div>
+ 
+    <div class="table-wrapper">
+      <table id="alumniTable">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)">Name <span class="sort-icon">↕</span></th>
+            <th onclick="sortTable(1)">Grad Year <span class="sort-icon">↕</span></th>
+            <th onclick="sortTable(2)">Role <span class="sort-icon">↕</span></th>
+            <th onclick="sortTable(3)">Major <span class="sort-icon">↕</span></th>
+            <th onclick="sortTable(4)">Location <span class="sort-icon">↕</span></th>
+          </tr>
+        </thead>
+        <tbody id="alumniBody">
+          <!-- Seeded with sample data — replace with your real roster -->
+        </tbody>
+      </table>
+    </div>
+    <div class="table-footer">
+      <span id="tableCount">Showing all alumni</span>
+      <span>Click column headers to sort</span>
+    </div>
+ 
+    <div class="add-alumni-cta">
+      <p>Are you a Ross-Ade Brigade alum not listed here? Submit your info and we'll add you to the directory.</p>
+      <button class="btn btn-primary" onclick="openModal()">Add Your Entry</button>
+    </div>
+  </div>
+</section>
+ 
+<!-- PHOTO ARCHIVE -->
+<section id="photos">
+  <div class="container">
+    <p class="section-label">Memory Lane</p>
+    <h2 class="section-title">Photo Archive</h2>
+    <div class="section-divider"></div>
+ 
+    <div class="photo-filters">
+      <button class="photo-filter-btn active" onclick="filterPhotos('all', this)">All</button>
+      <button class="photo-filter-btn" onclick="filterPhotos('game-day', this)">Game Day</button>
+      <button class="photo-filter-btn" onclick="filterPhotos('reunion', this)">Reunions</button>
+      <button class="photo-filter-btn" onclick="filterPhotos('historic', this)">Historic</button>
+      <button class="photo-filter-btn" onclick="filterPhotos('rehearsal', this)">Rehearsal</button>
+    </div>
+ 
+    <div class="photo-grid" id="photoGrid">
+      <!-- Photos populated by JS -->
+    </div>
+ 
+    <div class="photo-upload-note">
+      <strong>📸 Contribute to the Archive</strong> — Have photos from your years with the Brigade?
+      Send them to <a href="mailto:archive@rossadebrigade.org" style="color:var(--gold)">archive@rossadebrigade.org</a>
+      with the year, event name, and any names you remember. We'll add them to the collection.
+      For large batches, use the Google Drive link shared in our alumni newsletter.
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Stay Connected</p>
+    <h2 class="section-title">Contact Us</h2>
+    <div class="section-divider"></div>
+ 
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="contact-icon">🏟️</div>
+          <div>
+            <div class="contact-info-label">Organization</div>
+            <div class="contact-info-value">Ross-Ade Brigade<br>Purdue All-American Marching Band<br>West Lafayette, IN 47907</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">
+              <a href="mailto:alumni@rossadebrigade.org">alumni@rossadebrigade.org</a><br>
+              <a href="mailto:archive@rossadebrigade.org">archive@rossadebrigade.org</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">🎺</div>
+          <div>
+            <div class="contact-info-label">Purdue AAMB</div>
+            <div class="contact-info-value">
+              <a href="https://www.purdue.edu/bands" target="_blank">purdue.edu/bands</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📘</div>
+          <div>
+            <div class="contact-info-label">Social</div>
+            <div class="contact-info-value">
+              <a href="#">Facebook Group</a><br>
+              <a href="#">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="contact-form">
+        <div class="form-row-2">
+          <div class="form-row">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" placeholder="Orville" id="cfFirst" />
+          </div>
+          <div class="form-row">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" placeholder="Boilermaker" id="cfLast" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="you@purdue.edu" id="cfEmail" />
+        </div>
+        <div class="form-row">
+          <label class="form-label">Subject</label>
+          <select class="form-select" id="cfSubject">
+            <option>General Inquiry</option>
+            <option>Alumni Directory Update</option>
+            <option>Photo Submission</option>
+            <option>Reunion Planning</option>
+            <option>Website Feedback</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Your message…" id="cfMessage"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="submitContact()" style="width:100%">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ross-Ade Brigade</div>
+  <p class="footer-text">Purdue All-American Marching Band · West Lafayette, Indiana · Boiler Up! 🚂</p>
+  <p class="footer-github-note">Maintained by volunteers · <a href="https://github.com" target="_blank">View on GitHub</a> · Built with ❤️ by alumni</p>
+</footer>
+ 
+<!-- ALUMNI MODAL -->
+<div class="modal-overlay" id="alumniModal">
+  <div class="modal">
+    <div class="modal-title">Add Your Entry</div>
+    <p class="modal-sub">Your submission will be reviewed before appearing in the directory.</p>
+ 
+    <div class="form-row-2">
+      <div class="form-row">
+        <label class="form-label">First Name *</label>
+        <input class="form-input" type="text" id="mFirst" placeholder="First" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Last Name *</label>
+        <input class="form-input" type="text" id="mLast" placeholder="Last" />
+      </div>
+    </div>
+    <div class="form-row-2">
+      <div class="form-row">
+        <label class="form-label">Graduation Year *</label>
+        <input class="form-input" type="number" id="mYear" placeholder="e.g. 2005" min="1900" max="2099" />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Role *</label>
+        <select class="form-select" id="mRole">
+          <option>Drum Major</option>
+          <option>Head Drum Major</option>
+          <option>Feature Twirler</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Major / Field of Study</label>
+      <input class="form-input" type="text" id="mMajor" placeholder="e.g. Electrical Engineering" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Current City, State</label>
+      <input class="form-input" type="text" id="mLocation" placeholder="e.g. Chicago, IL" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Email (not displayed publicly)</label>
+      <input class="form-input" type="email" id="mEmail" placeholder="for verification only" />
+    </div>
+    <div class="form-row">
+      <label class="form-label">Fun Fact / Memory (optional)</label>
+      <textarea class="form-textarea" id="mNote" placeholder="A favorite Brigade memory…"></textarea>
+    </div>
+ 
+    <div class="modal-actions">
+      <button class="btn-close-modal" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitAlumni()">Submit Entry</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- SUCCESS TOAST -->
+<div class="success-toast" id="toast">✓ Submitted — thank you!</div>
+ 
+<script>
+  // ── ALUMNI DATA ──────────────────────────────────────────────
+  // Replace / expand this array with your real roster.
+  // For GitHub Pages, submissions are stored in localStorage and
+  // shown immediately; to persist them permanently, connect a
+  // Google Form + Sheet (see README for instructions).
+  const SEED_DATA = [
+    { name: "Alex Thornton",    year: 2022, role: "Head Drum Major",  major: "Music Education",       location: "Indianapolis, IN" },
+    { name: "Jordan Mills",     year: 2020, role: "Drum Major",       major: "Mechanical Engineering", location: "Chicago, IL" },
+    { name: "Casey Rivera",     year: 2018, role: "Feature Twirler",  major: "Communication",          location: "Nashville, TN" },
+    { name: "Morgan Lee",       year: 2015, role: "Drum Major",       major: "Computer Science",       location: "Seattle, WA" },
+    { name: "Taylor Brooks",    year: 2013, role: "Head Drum Major",  major: "Business",               location: "New York, NY" },
+    { name: "Riley Johnson",    year: 2010, role: "Drum Major",       major: "Civil Engineering",      location: "West Lafayette, IN" },
+    { name: "Drew Patterson",   year: 2008, role: "Drum Major",       major: "Physics",                location: "Austin, TX" },
+    { name: "Quinn Murphy",     year: 2005, role: "Feature Twirler",  major: "Nursing",                location: "Columbus, OH" },
+    { name: "Avery Chen",       year: 2001, role: "Head Drum Major",  major: "Political Science",      location: "Washington, DC" },
+    { name: "Sam Kowalski",     year: 1998, role: "Drum Major",       major: "Chemistry",              location: "Detroit, MI" },
+    { name: "Dana Hernandez",   year: 1995, role: "Drum Major",       major: "Agriculture",            location: "Lafayette, IN" },
+    { name: "Chris Wallace",    year: 1992, role: "Head Drum Major",  major: "Aeronautical Eng.",      location: "Houston, TX" },
+  ];
+ 
+  let allAlumni = [...SEED_DATA];
+  let sortCol = 1, sortDir = -1; // default: newest first
+ 
+  function loadLocalSubmissions() {
+    try {
+      const stored = JSON.parse(localStorage.getItem('rab_submissions') || '[]');
+      allAlumni = [...stored, ...SEED_DATA];
+    } catch(e) { allAlumni = [...SEED_DATA]; }
+  }
+ 
+  function renderTable(data) {
+    const tbody = document.getElementById('alumniBody');
+    const count = document.getElementById('tableCount');
+    if (!data.length) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--muted)">No alumni match your search.</td></tr>';
+      count.textContent = '0 results';
+      return;
+    }
+    tbody.innerHTML = data.map(a => `
+      <tr>
+        <td style="color:#e8e0d0;font-weight:400">${a.name}</td>
+        <td>${a.year}</td>
+        <td><span class="role-badge">${a.role}</span></td>
+        <td>${a.major || '—'}</td>
+        <td>${a.location || '—'}</td>
+      </tr>
+    `).join('');
+    count.textContent = `Showing ${data.length} of ${allAlumni.length} alumni`;
+  }
+ 
+  function filterTable() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const role = document.getElementById('roleFilter').value;
+    const decade = document.getElementById('decadeFilter').value;
+    let filtered = allAlumni.filter(a => {
+      const matchQ = !q || [a.name, String(a.year), a.major, a.location].some(v => v && v.toLowerCase().includes(q));
+      const matchRole = !role || a.role === role;
+      const matchDecade = !decade || (a.year >= +decade && a.year < +decade + 10);
+      return matchQ && matchRole && matchDecade;
+    });
+    filtered = sortData(filtered, sortCol, sortDir);
+    renderTable(filtered);
+  }
+ 
+  function sortData(data, col, dir) {
+    const keys = ['name','year','role','major','location'];
+    return [...data].sort((a, b) => {
+      const av = a[keys[col]] ?? '', bv = b[keys[col]] ?? '';
+      return av < bv ? dir : av > bv ? -dir : 0;
+    });
+  }
+ 
+  function sortTable(col) {
+    if (sortCol === col) sortDir *= -1;
+    else { sortCol = col; sortDir = 1; }
+    filterTable();
+  }
+ 
+  // ── MODAL ────────────────────────────────────────────────────
+  function openModal() {
+    document.getElementById('alumniModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('alumniModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('alumniModal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+ 
+  function submitAlumni() {
+    const first = document.getElementById('mFirst').value.trim();
+    const last  = document.getElementById('mLast').value.trim();
+    const year  = parseInt(document.getElementById('mYear').value);
+    const role  = document.getElementById('mRole').value;
+    if (!first || !last || !year) {
+      alert('Please fill in Name and Graduation Year at minimum.');
+      return;
+    }
+    const entry = {
+      name: `${first} ${last}`,
+      year,
+      role,
+      major: document.getElementById('mMajor').value.trim() || '—',
+      location: document.getElementById('mLocation').value.trim() || '—',
+    };
+    // Save to localStorage (survives page refresh; cleared on cache clear)
+    // For production: POST to a Google Apps Script endpoint instead
+    try {
+      const stored = JSON.parse(localStorage.getItem('rab_submissions') || '[]');
+      stored.unshift(entry);
+      localStorage.setItem('rab_submissions', JSON.stringify(stored));
+    } catch(e) {}
+    allAlumni.unshift(entry);
+    filterTable();
+    closeModal();
+    showToast('✓ Entry added! It will be reviewed by an admin.');
+    // Clear fields
+    ['mFirst','mLast','mYear','mMajor','mLocation','mEmail','mNote'].forEach(id => document.getElementById(id).value = '');
+  }
+ 
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+ 
+  // ── CONTACT FORM ─────────────────────────────────────────────
+  function submitContact() {
+    const first = document.getElementById('cfFirst').value.trim();
+    const email = document.getElementById('cfEmail').value.trim();
+    const msg   = document.getElementById('cfMessage').value.trim();
+    if (!first || !email || !msg) { alert('Please fill in all required fields.'); return; }
+    // In production: POST to Formspree, Netlify Forms, or a Google Apps Script
+    showToast('✓ Message sent — we\'ll be in touch!');
+    ['cfFirst','cfLast','cfEmail','cfMessage'].forEach(id => document.getElementById(id).value = '');
+  }
+ 
+  // ── PHOTO ARCHIVE ─────────────────────────────────────────────
+  const PHOTOS = [
+    { emoji: '🏟️', title: 'Ross-Ade Stadium Halftime', date: 'Fall 2023',   tag: 'game-day'  },
+    { emoji: '🎺', title: 'Senior Sendoff March',       date: 'Spring 2022', tag: 'rehearsal' },
+    { emoji: '🎉', title: 'Alumni Weekend Reunion',     date: 'Oct 2022',    tag: 'reunion'   },
+    { emoji: '📸', title: 'Historic Homecoming 1975',   date: '1975',        tag: 'historic'  },
+    { emoji: '🌧️', title: 'Rain Game vs. Michigan',     date: 'Oct 2019',    tag: 'game-day'  },
+    { emoji: '🎓', title: 'Graduation Day March',       date: 'May 2021',    tag: 'game-day'  },
+    { emoji: '🥁', title: 'World\'s Largest Drum Promo', date: '2018',       tag: 'historic'  },
+    { emoji: '🤝', title: '50-Year Reunion Dinner',     date: '2015',        tag: 'reunion'   },
+    { emoji: '🏋️', title: 'August Band Camp',           date: 'Aug 2023',    tag: 'rehearsal' },
+  ];
+ 
+  function renderPhotos(filter) {
+    const grid = document.getElementById('photoGrid');
+    const photos = filter === 'all' ? PHOTOS : PHOTOS.filter(p => p.tag === filter);
+    grid.innerHTML = photos.map(p => `
+      <div class="photo-card" data-tag="${p.tag}">
+        <div class="photo-placeholder">${p.emoji}
+          <span style="font-size:0.65rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">Photo Placeholder</span>
+        </div>
+        <div class="photo-caption">
+          <div class="photo-caption-title">${p.title}</div>
+          <div class="photo-caption-date">${p.date}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+ 
+  function filterPhotos(tag, btn) {
+    document.querySelectorAll('.photo-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPhotos(tag);
+  }
+ 
+  // ── INIT ─────────────────────────────────────────────────────
+  loadLocalSubmissions();
+  allAlumni = sortData(allAlumni, 1, -1);
+  renderTable(allAlumni);
+  renderPhotos('all');
+</script>
+</body>
+</html>
